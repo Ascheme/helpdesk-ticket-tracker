@@ -54,14 +54,14 @@ print(f"Total pending tickets: {pending_tickets}")
 print(f"Total resolved tickets: {resolved_tickets}")
 
 #7. search for a ticket
-# print("\n=== Ticket Search ===")
-# search_id = input("Enter ticket ID to search: ")
-#
-# ticket_found = False
-#
-# for ticket in tickets:
-#     if ticket["ticket_id"] == search_id:
-#         print("ticket found")
+print("\n=== Ticket Search ===")
+search_id = input("Enter ticket ID to search: ")
+
+ticket_found = False
+
+for ticket in tickets:
+    if ticket["ticket_id"] == search_id:
+        print("ticket found")
 
 #8. Update a ticket status
 print("\n=== Update Ticket Status ===")
