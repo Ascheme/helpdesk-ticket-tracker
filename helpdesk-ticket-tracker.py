@@ -61,4 +61,11 @@ ticket_found = False
 
 for ticket in tickets:
     if ticket["ticket_id"] == search_id:
-        print("ticket found")
+        ticket_found = True
+        print("\n=== Ticket Found ===")
+        print(f"Ticket ID: {ticket['ticket_id']}\nUser: {ticket['user']}\nIssue: {ticket['issue']}\nPriority: {ticket['priority']}\nStatus: {ticket['status']}")
+        break
+
+#checks if variable is still false
+if not ticket_found:
+    print("Ticket not found.")
