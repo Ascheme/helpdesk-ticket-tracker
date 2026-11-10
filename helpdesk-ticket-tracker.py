@@ -54,11 +54,36 @@ print(f"Total pending tickets: {pending_tickets}")
 print(f"Total resolved tickets: {resolved_tickets}")
 
 #7. search for a ticket
-print("\n=== Ticket Search ===")
-search_id = input("Enter ticket ID to search: ")
+# print("\n=== Ticket Search ===")
+# search_id = input("Enter ticket ID to search: ")
+#
+# ticket_found = False
+#
+# for ticket in tickets:
+#     if ticket["ticket_id"] == search_id:
+#         print("ticket found")
+
+#8. Update a ticket status
+print("\n=== Update Ticket Status ===")
+search_id = input("\nEnter ticket ID :")
 
 ticket_found = False
 
 for ticket in tickets:
     if ticket["ticket_id"] == search_id:
-        print("ticket found")
+        ticket_found = True
+        print(f"\nCurrent status: {ticket["status"]}")
+
+        new_status = input("\nEnter new status: ")
+
+        if new_status == "Open":
+            ticket["status"] = new_status
+        elif new_status == "Pending":
+            ticket["status"] = new_status
+        elif new_status == "Resolved":
+            ticket["status"] = new_status
+        else:
+            print("Enter a valid status. [Open, Pending, Resolved]")
+
+        print(f"\nTicket {ticket["ticket_id"]} successfully updated!")
+        print(f"New status: {ticket["status"]}")
