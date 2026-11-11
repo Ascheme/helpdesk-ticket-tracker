@@ -1,8 +1,8 @@
-#1. ticket list that contains dictionaries
+##1. ticket list that contains dictionaries
 tickets = []
 
 
-#2. dictionaries that holds ticket info, each dictionary = a ticket
+##2. dictionaries that holds ticket info, each dictionary = a ticket
 ticket_1001 = {
     "ticket_id": "1001",
     "user": "John",
@@ -25,17 +25,17 @@ ticket_1003 = {
     "status": "Resolved",
 }
 
-#3. adding tickets to the list
+##3. adding tickets to the list
 tickets.append(ticket_1001)
 tickets.append(ticket_1002)
 tickets.append(ticket_1003)
 
-#4. initializing ticket counters
+##4. initializing ticket counters
 open_tickets = 0
 pending_tickets = 0
 resolved_tickets = 0
 
-#5. display tickets and count statuses
+##5. display tickets and count statuses
 print("=== Helpdesk Ticket Tracker ===")
 for ticket in tickets:
     if ticket["status"] == "Open":
@@ -46,27 +46,28 @@ for ticket in tickets:
         resolved_tickets += 1
     print(f"\nTicket ID: {ticket['ticket_id']}\nUser: {ticket['user']}\nIssue: {ticket['issue']}\nPriority: {ticket['priority']}\nStatus: {ticket['status']}")
 
-#6. display ticket summary
+##6. display ticket summary
 print("\n=== Ticket Summary ===")
 print(f"Total tickets: {len(tickets)}")
 print(f"Total open tickets: {open_tickets}")
 print(f"Total pending tickets: {pending_tickets}")
 print(f"Total resolved tickets: {resolved_tickets}")
 
-#7. search for a ticket
-print("\n=== Ticket Search ===")
-search_id = input("Enter ticket ID to search: ")
+##7. search for a ticket
+# print("\n=== Ticket Search ===")
+# search_id = input("Enter ticket ID to search: ")
+#
+# ticket_found = False
+#
+# for ticket in tickets:
+#     if ticket["ticket_id"] == search_id:
+#         print("ticket found")
 
-ticket_found = False
-
-for ticket in tickets:
-    if ticket["ticket_id"] == search_id:
-        print("ticket found")
-
-#8. Update a ticket status
+##8. Update a ticket status
 print("\n=== Update Ticket Status ===")
 search_id = input("\nEnter ticket ID :")
 
+#checks whether a valid ticket number was entered
 ticket_found = False
 
 for ticket in tickets:
@@ -76,6 +77,7 @@ for ticket in tickets:
 
         new_status = input("\nEnter new status: ")
 
+        #checks/updates status if valid status is entered
         if new_status == "Open":
             ticket["status"] = new_status
         elif new_status == "Pending":
@@ -83,7 +85,12 @@ for ticket in tickets:
         elif new_status == "Resolved":
             ticket["status"] = new_status
         else:
-            print("Enter a valid status. [Open, Pending, Resolved]")
+            print("Invalid status.")
 
-        print(f"\nTicket {ticket["ticket_id"]} successfully updated!")
-        print(f"New status: {ticket["status"]}")
+        #when valid status is entered, a success message appears and displays new status
+        if new_status in ["Open", "Pending", "Resolved"]:
+            print(f"\nTicket {ticket["ticket_id"]} successfully updated!")
+            print(f"New status: {ticket["status"]}")
+
+if not ticket_found:
+    print("Ticket not found.")
