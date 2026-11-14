@@ -29,20 +29,6 @@ tickets.append(ticket_1001)
 tickets.append(ticket_1002)
 tickets.append(ticket_1003)
 
-#Initializing ticket counters
-open_tickets = 0
-pending_tickets = 0
-resolved_tickets = 0
-
-# Calculating ticket count based on status
-for ticket in tickets:
-    if ticket["status"] == "Open":
-        open_tickets += 1
-    elif ticket["status"] == "Pending":
-        pending_tickets += 1
-    elif ticket["status"] == "Resolved":
-        resolved_tickets += 1
-
 # Helpdesk menu
 while True:
     print("=== Helpdesk Menu ===")
@@ -83,19 +69,16 @@ while True:
                 ticket_found = True
                 print(f"\nTicket found!\nCurrent status: {ticket['status']}")
 
-                new_status = input("\nEnter new status: ")
+                #removes spaces before/after and capitalizes the first letter entered
+                new_status = input("\nEnter new status: ").strip().title()
 
-                #checks/updates status if valid status is entered
-                if new_status == "Open":
-                    ticket["status"] = new_status
-                elif new_status == "Pending":
-                    ticket["status"] = new_status
-                elif new_status == "Resolved":
+                #simplified way to determine the new status of a ticket, instead of repetitive if/elif statements
+                if new_status in ["Open", "Pending", "Resolved"]:
                     ticket["status"] = new_status
                 else:
-                    print("Invalid status. [Ex. Open, Pending, or Resolved]\n")
+                    print("Invalid status. Enter 'Open', 'Pending', or 'Resolved'.\n")
 
-                    #when valid status is entered, a success message appears and displays new status
+                #when valid status is entered, a success message appears and displays new status
                 if new_status in ["Open", "Pending", "Resolved"]:
                     print(f"\nTicket {ticket['ticket_id']} successfully updated!")
                     print(f"New status: {ticket['status']}\n")
@@ -105,6 +88,20 @@ while True:
             print("Ticket does not exist. Please enter a 4-digit ticket number.\n")
 
     elif user_choice == "4":
+        #Reset ticket counters to 0
+        open_tickets = 0
+        pending_tickets = 0
+        resolved_tickets = 0
+
+        #Counts tickets based on status
+        for ticket in tickets:
+            if ticket["status"] == "Open":
+                open_tickets += 1
+            elif ticket["status"] == "Pending":
+                pending_tickets += 1
+            elif ticket["status"] == "Resolved":
+                resolved_tickets += 1
+
         print("\n=== Ticket Summary ===")
         print(f"Total tickets: {len(tickets)}")
         print(f"Total open tickets: {open_tickets}")
@@ -114,3 +111,6 @@ while True:
     elif user_choice == "5":
         print("\nExiting program...Good bye :)")
         break
+
+    else:
+        print("Invalid selection. Please choose 1-5.\n")
