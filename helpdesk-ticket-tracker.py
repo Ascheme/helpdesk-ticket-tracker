@@ -1,3 +1,5 @@
+import json
+
 # Ticket list that will contain dictionaries
 tickets = []
 
@@ -32,7 +34,7 @@ tickets.append(ticket_1003)
 # Helpdesk menu
 while True:
     print("=== Helpdesk Menu ===")
-    print(f"1. Display All Tickets\n2. Search for a Ticket\n3. Update Ticket Status\n4. Display Ticket Summary\n5. Exit")
+    print(f"1. Display All Tickets\n2. Search for a Ticket\n3. Update Ticket Status\n4. Display Ticket Summary\n5. Save and Exit")
     user_choice = input("\nEnter your choice: ")
 
     #Displays all tickets
@@ -109,6 +111,11 @@ while True:
         print(f"Total resolved tickets: {resolved_tickets}\n")
 
     elif user_choice == "5":
+
+        #writes the tickets and updates to a file before exiting the program
+        with open("tickets.json", "w") as file:
+            json.dump(tickets, file, indent=4)
+
         print("\nExiting program...Good bye :)")
         break
 
