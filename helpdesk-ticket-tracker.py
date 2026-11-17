@@ -1,45 +1,28 @@
 import json
+from json import JSONDecodeError
 
 # Ticket list that will contain dictionaries
 tickets = []
 
-# Dictionaries that holds ticket info, each dictionary = a ticket
-ticket_1001 = {
-    "ticket_id": "1001",
-    "user": "John",
-    "issue": "Cannot connect to Wi-Fi",
-    "priority": "High",
-    "status": "Open",
-}
-ticket_1002 = {
-    "ticket_id": "1002",
-    "user": "Sarah",
-    "issue": "Printer not responding",
-    "priority": "Normal",
-    "status": "Pending",
-}
-ticket_1003 = {
-    "ticket_id": "1003",
-    "user": "Michael",
-    "issue": "Password reset",
-    "priority": "Low",
-    "status": "Resolved",
-}
-
-# Tickets being added to the list
-tickets.append(ticket_1001)
-tickets.append(ticket_1002)
-tickets.append(ticket_1003)
+#checks if .json file exists, and continues to the menu if it does not
+try:
+    #reads the tickets from a .json file and converts it back into python
+    with open("tickets.json", "r") as file:
+        tickets = json.load(file)
+except FileNotFoundError:
+    print("No JSON file detected. Creating an empty list...\n")
+except JSONDecodeError:
+    print("Invalid JSON format detected. Creating an empty list...\n")
 
 # Helpdesk menu
 while True:
     print("=== Helpdesk Menu ===")
-    print(f"1. Display All Tickets\n2. Search for a Ticket\n3. Update Ticket Status\n4. Display Ticket Summary\n5. Save and Exit")
+    print("1. Display All Tickets\n2. Search for a Ticket\n3. Update Ticket Status\n4. Display Ticket Summary\n5. Save and Exit")
     user_choice = input("\nEnter your choice: ")
 
     #Displays all tickets
     if user_choice == "1":
-        print(f"\n=== All helpdesk tickets ===\n")
+        print("\n=== All helpdesk tickets ===\n")
 
         for ticket in tickets:
             print(f"Ticket ID: {ticket['ticket_id']}\nUser: {ticket['user']}\nIssue: {ticket['issue']}\nPriority: {ticket['priority']}\nStatus: {ticket['status']}\n-----------------------------------------------------")
@@ -112,7 +95,7 @@ while True:
 
     elif user_choice == "5":
 
-        #writes the tickets and updates to a file before exiting the program
+        #writes the tickets to a file before exiting the program (converts it to json)
         with open("tickets.json", "w") as file:
             json.dump(tickets, file, indent=4)
 

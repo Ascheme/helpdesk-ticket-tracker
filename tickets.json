@@ -1,1 +1,23 @@
-[]
+[
+    {
+        "ticket_id": "1001",
+        "user": "John",
+        "issue": "Cannot connect to Wi-Fi",
+        "priority": "High",
+        "status": "Resolved"
+    },
+    {
+        "ticket_id": "1002",
+        "user": "Sarah",
+        "issue": "Printer not responding",
+        "priority": "Normal",
+        "status": "Resolved"
+    },
+    {
+        "ticket_id": "1003",
+        "user": "Michael",
+        "issue": "Password reset",
+        "priority": "Low",
+        "status": "Resolved"
+    }
+]
