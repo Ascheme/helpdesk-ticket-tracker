@@ -1,20 +1,33 @@
 import json
 from json import JSONDecodeError
 
-# Ticket list that will contain dictionaries
+#ticket list that will contain dictionaries
 tickets = []
 
-#checks if .json file exists, and continues to the menu if it does not
-try:
-    #reads the tickets from a .json file and converts it back into python
-    with open("tickets.json", "r") as file:
-        tickets = json.load(file)
-except FileNotFoundError:
-    print("No JSON file detected. Creating an empty list...\n")
-except JSONDecodeError:
-    print("Invalid JSON format detected. Creating an empty list...\n")
+def load_tickets():
+    #checks if .json file exists, and continues to the menu if it does not
+    try:
+        #reads the tickets from a .json file and converts it back into python
+        with open("tickets.json", "r") as file:
+            tickets = json.load(file)
+            return tickets
 
-# Helpdesk menu
+    except FileNotFoundError:
+        print("No JSON file detected. Creating an empty list...\n")
+        return []
+    except JSONDecodeError:
+        print("Invalid JSON format detected. Creating an empty list...\n")
+        return []
+
+def save_tickets(tickets):
+    #writes the tickets to a file before exiting the program (converts it to json)
+    with open("tickets.json", "w") as file:
+        json.dump(tickets, file, indent=4)
+
+#calling the function after defining it
+tickets = load_tickets()
+
+#helpdesk menu
 while True:
     print("=== Helpdesk Menu ===")
     print("1. Display All Tickets\n2. Search for a Ticket\n3. Update Ticket Status\n4. Display Ticket Summary\n5. Save and Exit")
@@ -28,7 +41,7 @@ while True:
             print(f"Ticket ID: {ticket['ticket_id']}\nUser: {ticket['user']}\nIssue: {ticket['issue']}\nPriority: {ticket['priority']}\nStatus: {ticket['status']}\n-----------------------------------------------------")
         print("--End of list--\n")
 
-    #Intergrated search function
+    #search function
     elif user_choice == "2":
         print("\n=== Ticket Search ===")
         search_id = input("Enter ticket ID to search: ")
@@ -44,7 +57,7 @@ while True:
         if not ticket_found:
             print("Ticket not found. :(\n")
 
-    #Update a ticket's status
+    #update a ticket's status
     elif user_choice == "3":
         search_id = input("\nEnter ticket ID to search: ")
         ticket_found = False
@@ -73,12 +86,12 @@ while True:
             print("Ticket does not exist. Please enter a 4-digit ticket number.\n")
 
     elif user_choice == "4":
-        #Reset ticket counters to 0
+        #reset ticket counters to 0
         open_tickets = 0
         pending_tickets = 0
         resolved_tickets = 0
 
-        #Counts tickets based on status
+        #counts tickets based on status
         for ticket in tickets:
             if ticket["status"] == "Open":
                 open_tickets += 1
@@ -94,11 +107,7 @@ while True:
         print(f"Total resolved tickets: {resolved_tickets}\n")
 
     elif user_choice == "5":
-
-        #writes the tickets to a file before exiting the program (converts it to json)
-        with open("tickets.json", "w") as file:
-            json.dump(tickets, file, indent=4)
-
+        save_tickets(tickets)
         print("\nExiting program...Good bye :)")
         break
 
