@@ -4,7 +4,7 @@
         "user": "John",
         "issue": "Cannot connect to Wi-Fi",
         "priority": "High",
-        "status": "Pending"
+        "status": "Resolved"
     },
     {
         "ticket_id": "1002",
