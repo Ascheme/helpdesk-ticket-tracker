@@ -3,7 +3,7 @@ Python: Helpdesk Ticket Tracker
 **Version:** 1.0.0
 
 ## Project Overview:
-  This is an interactive program that allows you to view and update the status of existing tickets. The purpose of coding this program, is to further understand concepts such as for loops, boolean expressions, if/elif/else, etc.
+  An interactive program that allows you to view and update the status of existing tickets. The purpose of coding this program, is to further understand concepts such as for loops, boolean expressions, if/elif/else, etc.
 
 ## Features:
   - Display all existing tickets and its information (ticket_id, user, issue, etc.)
