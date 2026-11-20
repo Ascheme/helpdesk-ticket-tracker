@@ -26,7 +26,7 @@ Python: Helpdesk Ticket Tracker
   4. Run 'helpdesk-ticket-tracker.py'
 
 ## Example Output:
-    === Helpdesk Menu ===
+    ```=== Helpdesk Menu ===
     1. Display All Tickets
     2. Search for a Ticket
     3. Update Ticket Status
@@ -44,7 +44,7 @@ Python: Helpdesk Ticket Tracker
     Issue: Cannot connect to Wi-Fi
     Priority: High
     Status: Open
-    -----------------------------------------------------
+    -----------------------------------------------------```
     
 ## What I learned:
   - Loading and saving data to a JSON file
