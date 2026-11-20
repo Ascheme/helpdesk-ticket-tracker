@@ -1,22 +1,26 @@
 Python: Helpdesk Ticket Tracker
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 
 ## Project Overview:
-  An interactive program that allows you to view and update the status of existing tickets. The purpose of coding this program, is to further understand concepts such as for loops, boolean expressions, if/elif/else, etc.
+  An interactive program that allows you to view and update the status of existing tickets. Tickets are now stored in a JSON file, as opposed to being hard coded.
 
 ## Features:
-  - Display all existing tickets and its information (ticket_id, user, issue, etc.)
-  - Search function to find a specific ticket
-  - Update a ticket's status (ex. Open, Pending, Resolved)
-  - Display a ticket summary that tells you the number of tickets based on the total tickets and status
+  - Display all helpdesk tickets.
+  - Search for tickets by ID.
+  - Update ticket statuses.
+  - Display ticket summaries.
+  - Save tickets to a JSON file.
+  - Load previously saved tickets when the program starts.
+  - Handle missing or invalid JSON files.
+  - Validate user input.
 
 ## Requirements:
-  - Python 3.x
+  - Python 3.x; no external packages required
   - Any Python-compatible IDE or code editor (ex. Intellij)
 
 ## How to Run:
-  1. Clone or download the repository.
+  1. Clone or download the repository and the 'tickets.json' file (make sure the .py and .json files are in the same folder).
   2. Open the project in an IDE or terminal.
   3. Navigate to the project directory
   4. Run 'helpdesk-ticket-tracker.py'
@@ -43,12 +47,7 @@ Python: Helpdesk Ticket Tracker
     -----------------------------------------------------
     
 ## What I learned:
-  - How to create an interactive menu with if/elif/else statements
-  - Nesting for loops into each of the "choices" to perform a specific function
-  - Briefly touched on how to save ticket information in a .json file, but that'll come out in the next update. Stay tuned ;)
-
-## Future Improvements:
-  - Loading existing tickets when the program starts
-  - Handle missing or invalid JSON files
-  - Improve input validation
-  - Refactor code into reusable functions
+  - Loading and saving data to a JSON file
+  - File and exception handling
+  - Validating user input
+  - How to refactor code into reusable functions
