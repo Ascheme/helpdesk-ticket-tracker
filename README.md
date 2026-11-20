@@ -17,37 +17,42 @@ Python: Helpdesk Ticket Tracker
 
 ## Requirements:
   - Python 3.x; no external packages required
-  - Any Python-compatible IDE or code editor (ex. Intellij)
+  - Any Python-compatible IDE or code editor (ex. Intellij IDEA)
 
 ## How to Run:
-  1. Clone or download the repository and the 'tickets.json' file (make sure the .py and .json files are in the same folder).
+  1. Download the latest release. *Note: tickets.json is created when the program saves tickets, if it doesn't already exist.*
   2. Open the project in an IDE or terminal.
   3. Navigate to the project directory
   4. Run 'helpdesk-ticket-tracker.py'
 
 ## Example Output:
-    ```=== Helpdesk Menu ===
-    1. Display All Tickets
-    2. Search for a Ticket
-    3. Update Ticket Status
-    4. Display Ticket Summary
-    5. Save and Exit
-    
-    Enter your choice: 2
+```
+=== Helpdesk Menu ===
+1. Display All Tickets
+2. Search for a Ticket
+3. Update Ticket Status
+4. Display Ticket Summary
+5. Save and Exit
 
-    === Ticket Search ===
-    Enter ticket ID to search: 1001
-    Ticket found!
-    -----------------------------------------------------
-    Ticket ID: 1001
-    User: John
-    Issue: Cannot connect to Wi-Fi
-    Priority: High
-    Status: Open
-    -----------------------------------------------------```
+Enter your choice: 2
+
+=== Ticket Search ===
+Enter ticket ID to search: 1001
+Ticket found!
+-----------------------------------------------------
+Ticket ID: 1001
+User: John
+Issue: Cannot connect to Wi-Fi
+Priority: High
+Status: Open
+-----------------------------------------------------
+```
     
 ## What I learned:
   - Loading and saving data to a JSON file
   - File and exception handling
   - Validating user input
   - How to refactor code into reusable functions
+
+## Future Improvements
+  - 
