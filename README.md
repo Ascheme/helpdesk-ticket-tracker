@@ -55,4 +55,6 @@ Status: Open
   - How to refactor code into reusable functions
 
 ## Future Improvements
-  - 
+  - Add new tickets
+  - Automatically generate ticket IDs
+  - Delete tickets
