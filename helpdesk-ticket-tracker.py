@@ -25,15 +25,12 @@ def save_tickets(tickets):
         json.dump(tickets, file, indent=4)
 
 def display_tickets(tickets):
-    tickets_exist = False
-
-    for ticket in tickets:
-        if len(tickets) > 0:
-            tickets_exist = True
-            print(f"Ticket ID: {ticket['ticket_id']}\nUser: {ticket['user']}\nIssue: {ticket['issue']}\nPriority: {ticket['priority']}\nStatus: {ticket['status']}\n-----------------------------------------------------")
-
-    if not tickets_exist:
+    if len(tickets) == 0:
         print("-- No tickets exist --\n")
+    else:
+        for ticket in tickets:
+            print(f"Ticket ID: {ticket['ticket_id']}\nUser: {ticket['user']}\nIssue: {ticket['issue']}\nPriority: {ticket['priority']}\nStatus: {ticket['status']}\n-----------------------------------------------------")
+        print("--End of list--\n")
 
 def search_tickets(tickets):
     search_id = input("Enter ticket ID to search: ")
@@ -64,14 +61,11 @@ def update_tickets(tickets):
             #simplified way to determine the new status of a ticket, instead of repetitive if/elif statements
             if new_status in ["Open", "Pending", "Resolved"]:
                 ticket["status"] = new_status
-            else:
-                print("Invalid status. Enter 'Open', 'Pending', or 'Resolved'.\n")
-
-            #when valid status is entered, a success message appears and displays new status
-            if new_status in ["Open", "Pending", "Resolved"]:
                 print(f"\nTicket {ticket['ticket_id']} successfully updated!")
                 print(f"New status: {ticket['status']}\n")
                 break
+            else:
+                print("Invalid status. Enter 'Open', 'Pending', or 'Resolved'.\n")
 
     if not ticket_found:
         print("Ticket does not exist. Please enter a 4-digit ticket number.\n")

@@ -11,7 +11,7 @@
         "user": "Sarah",
         "issue": "Printer not responding",
         "priority": "Normal",
-        "status": "Resolved"
+        "status": "Open"
     },
     {
         "ticket_id": "1003",
